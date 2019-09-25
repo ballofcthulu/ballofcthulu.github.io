@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- 
+
+
+	stop looking at my source code u smelly varmint
+
+	
+ -->
+
+
+
+<head>
+<script type="text/javascript" src="jquery.min.js"> </script>
+<link href="tabulator_semantic-ui.min.css" rel="stylesheet">
+<script type="text/javascript" src="tabulator.min.js"></script>
+
+<!-- <link href="tabulator_semantic-ui.css" rel="stylesheet">
+<script type="text/javascript" src="tabulator.js"></script> -->
+
+<script>
+
+	// TODO implement standard match view
+	// TODO cross-season support
+	// TODO implement averages and other mining functions
+	// TODO prettify for mobile
+
+	var defaultData = 'season6.json';
+	var twcDemo = 'mnp-11-12-SSS-TWC.json';
+	var iblDemo = 'mnp-11-91-IBL-PBR.json';
+
+	// "refuse to set unsafe header" error. apprently chrome should handle request headers automatically.
+	// $.ajax({
+    // 	beforeSend: function(request) {
+    //     	request.setRequestHeader("accept-encoding", 'gzip, deflate');
+	// 		},
+	// 	dataType: "json",
+	// 	url: seasonDemo,
+	// 	success: loadPage
+	// });
+
+	$.getJSON(defaultData, loadPage);
+
+
+	function loadPage(json){
+
+		//create Tabulator on DOM element with id "example-table"
+		var table = new Tabulator("#main-table", {
+			height:600, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+ 			data: json, //assign data to table
+ 			layout:"fitDataFill", //fit columns to width of table (optional)
+ 			columns:[ //Define Table Columns
+			 {title:"Player", field:"player", headerFilter:true},
+			 {title:"Machine", field:"machine", headerFilter:true},
+			 {title:"Team", field:"team", headerFilter:true},
+			 {title:"Venue", field:"venue_key", headerFilter:true},
+			 {title:"Wk", field:"week"},
+			 {title:"Score", field:"score", formatter:"money", formatterParams:{precision:false}},
+			 {title:"Pts", field:"points"}
+			 ],
+		});
+
+		$("#s6").click(function(){
+			table.replaceData("season6.json");
+		});
+		$("#s7").click(function(){
+			table.replaceData("season7.json");
+		});
+		$("#s8").click(function(){
+			table.replaceData("season8.json");
+		});
+		$("#s9").click(function(){
+			table.replaceData("season9.json");
+		});
+		$("#s11").click(function(){
+			table.replaceData("season11.json");
+		});
+	}
+
+</script>
+</head>
+
+
+<body>
+	
+	<div class="wrapper">
+
+		<span>click -> </span>
+		<span class="button" id="s6">S06</span>
+		<span class="button" id="s7">S07</span>
+		<span class="button" id="s8">S08</span>
+		<span class="button" id="s9">S09</span>
+		<span class="button" style="text-decoration: line-through" id="s10">S10</span>
+		<span class="button" id="s11">S11</span>
+		<span class="button" style="text-decoration: line-through" id="s12">s12</span>
+		<div id="main-table"></div>
+		<div>
+			<p>Just an ugly proof of concept that I'll update later so don't yell at me.</p>
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>
