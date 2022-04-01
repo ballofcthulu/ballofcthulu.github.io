@@ -1,10 +1,12 @@
+Meteor 2021
+===========
 Skill Shot
-==========
+----------
 At the start of the ball, the rollovers and METEOR drop target lights will flash.
 Hitting either of those achieves a skill shot.
 
-Gameplay
-========
+Normal Gameplay
+---------------
 During the course of normal play, the rules of Meteor are similar to the original.
 
 Banks of 3 drop targets award bonus lights. Completing the METEOR drop targets advances the Bonus X, and the spinner value is controlled by how many METEOR targets are down
@@ -46,4 +48,5 @@ If the player achieves all four goals over the course of a game, they will enter
 2) Meteor Storm > Orpheus > Completed
 3) Super Spinner
 4) Max Bonus
+
 Upon completion of the four goals and resumption of regular play, Wizard Mode will begin. During the Wizard Mode period, all switches are worth a large value and clearing banks of 3 targets will award a Jackpot. Clearing the METEOR targets awards a Super Jackpot.
